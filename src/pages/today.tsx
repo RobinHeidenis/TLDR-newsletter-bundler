@@ -10,9 +10,9 @@ export default function Today() {
       </h1>
 
       {data?.map((entry) => (
-        <div key={entry.text}
+        <div key={entry.title}
              className={`flex flex-col items-center justify-center gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20`}>
-          <h2 className="text-2xl font-bold">{entry.text}</h2>
+          <h2 className="text-2xl font-bold">{entry.title}</h2>
           <div className="text-lg">{entry.description}</div>
           <a href={entry.link} target="_blank" className="text-lg">
             visit article

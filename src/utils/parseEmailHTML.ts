@@ -25,16 +25,16 @@ export const parseEmailHTML = (emailHTML: string) => {
         console.error('Found link element does not have an href attribute', linkElement);
         return;
       }
-      const text = linkElement.text();
+      const title = linkElement.text();
       const description = innerSpanElement.text();
       const parts = originalLink.split('/');
       const cleanUrlIndex = parts.indexOf('CL0') + 1;
       const link = new URL(decodeURIComponent(parts[cleanUrlIndex] ?? ''));
       link.searchParams.delete('utm_source');
-      if(text.toLowerCase().includes('(sponsor')) return;
+      if(title.toLowerCase().includes('(sponsor')) return;
       return {
         link: link.toString(),
-        text,
+        title,
         description,
       }
     }

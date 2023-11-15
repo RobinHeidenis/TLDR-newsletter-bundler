@@ -3,7 +3,7 @@ import Link from "next/link";
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const { data } = api.email.today.useQuery();
+  const { data } = api.cron.saveTodaysEmails.useQuery();
   if (data) console.log(data);
 
   return (

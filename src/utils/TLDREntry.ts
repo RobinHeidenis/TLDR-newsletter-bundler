@@ -1,13 +1,16 @@
-import { z } from "zod";
-import {categoriesArray} from "~/utils/categories";
+import {z} from "zod";
+import {firestore} from "firebase-admin";
+import Timestamp = firestore.Timestamp;
 
 export const TLDREntry = z.object({
   link: z.string().url(),
-  text: z.string(),
+  title: z.string(),
   description: z.string(),
-  category: z.enum(categoriesArray),
+  sponsor: z.boolean().default(false),
 })
 
 export type TLDREntry = z.infer<typeof TLDREntry>;
 
-export const categories = TLDREntry.shape.category.enum;
+export type FirestoreTLDREntry = TLDREntry & {
+  date: Timestamp,
+}
